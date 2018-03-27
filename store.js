@@ -25,7 +25,13 @@ module.exports = {
   },
   populateUser () {
     console.log(`Populate User`)
-    knex.select("*").from("user").then(function (values) {
+
+    return knex.select("*").from("user").then(function (values){
+      console.log(values)
+      return {nilai:values};
+    });
+
+    /*knex.select("*").from("user").then(function (values) {
       // No need to check err object as this function will 
       // only be executed only when it is a success.
       console.log(values);
@@ -35,7 +41,7 @@ module.exports = {
     }).finally(function () {
       // To close the connection pool
       knex.destroy();
-    });
+    });*/
   }
 }
 
