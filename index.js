@@ -23,6 +23,9 @@ app.post('/login', (req, res) => {
       else res.sendStatus(401)
     })
 })
+app.get('/getUser', function (req, res) {
+    store.populateUser()
+  })
 app.listen(7555, () => {
   console.log('Server running on http://localhost:7555')
 })

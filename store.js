@@ -22,6 +22,20 @@ module.exports = {
         })
         return { success: hash === user.encrypted_password }
       })
+  },
+  populateUser () {
+    console.log(`Populate User`)
+    knex.select("*").from("user").then(function (values) {
+      // No need to check err object as this function will 
+      // only be executed only when it is a success.
+      console.log(values);
+    }).catch(function (err) {
+      // All the error can be checked in this piece of code
+      console.log(err);
+    }).finally(function () {
+      // To close the connection pool
+      knex.destroy();
+    });
   }
 }
 
